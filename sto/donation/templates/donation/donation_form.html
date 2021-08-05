@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+{% load static %}
+{% load bootstrap4 %}
+
+{% block content-header %}
+    
+{% endblock %}
+
+{% block content %}
+
+<div class="row mt-3">
+    <!-- mt-3 : 마진 탑 간격 3/ 3이 글자 한개 크기-->
+    <!-- 좌측 화면 -->
+    <div class="col-md-7">
+        <div class="row">
+            <div class="image">                        
+            <img class=" img-fluid"  src="{% static 'images/거북이.jpg' %}" alt="" />
+            </div>
+        </div>
+        <br>
+        {% comment %} 컨텐트 메시지 스타일 {% endcomment %}
+        {% block style%}
+            <style>
+                #ContentMessage {
+                    position: relative;
+                    top: -60px;
+                    padding: 20px 60px 10px;
+                    background-color: #80c342;
+                    
+
+                    width : 90%;
+                    margin-left: 40px;
+                }
+
+                .content-home__title{
+                    color: #fff;
+                    font-weight: 1000;
+                }
+
+                .content-message__title {
+                    display: block;
+                    margin: 0;
+                    width: 100%;
+                    line-height: 120%;
+                    padding: 24px 0;
+                    border-color: #80c342;
+                    border-width: 1px 0;
+                    border-style: solid;
+                    color: #80c342;
+                    text-align: center;
+                }
+            </style>
+        {% endblock%}
+
+        <div id = "ContentMessage" class="wide img-fluid">
+            <h2 class="content-home__title">
+                당신의 후원이 변화를 만듭니다
+            </h2>
+        </div>
+         <div>
+        <h2 class="content-message__title">우리의 지구를 함께 지켜주세요</h1>
+        <div class="content-message__text text-center" >
+        "지구는 동시다발적인 환경문제로 심각한 위기에 처해있습니다. 
+        <br>하지만 우리에게는 아직 기회가 있습니다."
+        <br>
+        <br>
+        "환경문제 해결을 위해서는 한시라도 빨리 행동해야 합니다."
+        <br>
+        <br>
+        "여러분의 후원으로 환경 문제를 조사하고, 경각심을 불러 일으키는 보고서를 발표하고,<br>
+        창의적인 캠페인과 직접 행동을 펼칠 수 있습니다.<br>
+        미래 세대가 깨끗한 세상에서 살 수 있도록, 지구를 위한 변화를 함께 만들어주세요!"
+        </div>
+    </div>
+    </div> <!-- 좌측 메인컨텐츠 끝-->
+
+    <div class="col-md-5" style="border-left: 1px solid lightgrey;">
+        <!-- 우측메뉴 시작 -->
+        <div class="text-center ">
+        {% comment %} <style>
+            #id_card { width:300px;}
+        </style>  {% endcomment %}
+            <br>
+            <h2>체크카드와 신용카드 <br>모두 가능합니다.</h2>
+            <p>첫 후원금은 10일 혹은 27일에 결제 됩니다. </br>
+                익월 부터는 정기결제일인 10일에 결제되며,<br> 미결제시 27일 재결제 됩니다.</p>
+        </div>
+        <div class= "">
+                <form action="." method="post" class="form col-sm-10 mx-auto">
+                    {% csrf_token %}
+                    {% bootstrap_form form %}
+                    <button  onclick="javascript:history.back()" class="btn float-right btn-sm">
+                        <i class="fas fa-undo"></i> 취소
+                    </button>
+                    <button type="submit" class="btn float-right btn-sm">
+                            <i class="fas fa-sign-in-alt"></i> 확인</button>
+                    </button>
+                    
+                </form>
+            </div>
+    </div> <!-- 우측메뉴 끝-->
+</div>
+
+
+
+
+
+
+
+{% endblock %}

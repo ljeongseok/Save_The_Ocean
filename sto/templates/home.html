@@ -1,9 +1,199 @@
 {% extends 'base.html' %}
-{% block content-header %}
- 
-<h1 class="m-0">IoT Dashboard Home</h1>
-{% endblock %}
+{% load static %}
+
+
+{% block style %}
+<style>
+    .table { width: 80%;}
+     {% comment %} table>thead th {
+        text-align:center;
+    }  {% endcomment %}
+   
+</style>
+{% endblock  %}
+
 {% block content %}
- 
-<h3> 환영합니다. </h3>
+
+<!-- One -->
+    <section class="banner style1 orient-left content-align-left image-position-right fullscreen onload-image-fade-in onload-content-fade-right">
+        <div class="content">
+            <h1>We can change.</br> 
+            We need to change.</h1>
+            <p class="major">건강한 바다는
+                70만 종 이상 생명체가 살아가는 삶의 터전일 뿐 아니라, 지구 전체의 생존을 위해 필수적입니다. 
+                수십억 명의 사람들에게 일자리와 식량을 제공하는 바다는 인류의 건강과 안녕을 위해 매우 중요합니다.</p>
+            <ul class="actions stacked">
+                {% if user.is_active %}
+                    <li><a href="{% url 'donation:donation_check' %}" class="button big wide smooth-scroll-middle">후원하기</a></li>
+                {% else %}
+                    <li><a href="{% url 'login' %}" class="button big wide smooth-scroll-middle">로그인하기</a></li>
+                {% endif %}
+                {% if user.is_active %}
+                <li><a href="{% url 'logout' %}" class="button big wide smooth-scroll-middle">로그아웃</a></li>
+                {% else %}
+
+                {% endif %}
+                <li><a href="{% url 'accounts:register' %}" class="button big wide smooth-scroll-middle">회원가입</a></li>
+            </ul>
+        </div>
+        <div class="image">                        
+            <img src="{% static 'images/cold-ocean.jpg' %}" alt="" />
+        </div>
+    </section>
+
+    <section class="spotlight style1 orient-right content-align-left image-position-center onscroll-image-fade-in">
+        <div class="content">	
+            <p>그러나 지금 바다는 그 어느 때보다 큰 위험에 처해 있습니다. 플라스틱 등 각종 독성 물질로 인한 오염, 파괴적인 어업은 물론 기후변화까지 심화되며 해양 생태계는 심각한 위협에 내몰리고 있습니다. 하지만 우리가 함께 노력한다면, 바다를 살리고 바다를 터전으로 살아가는 수많은 해양생물과 사람들을 지켜낼 수 있을 것입니다.
+</p>
+            <ul class="actions stacked">
+                <li><a href="{% url 'donation:newsletter' %}" class="button">Learn More</a></li>
+            </ul>
+        </div>
+        <div class="image">
+            <img src="{% static 'images/sea.jpg' %}" alt="" />
+        </div>
+    </section>
+
+<!-- Three -->
+    <section class="spotlight style1 orient-left content-align-left image-position-center onscroll-image-fade-in">
+        <div class="content">
+            <p>화석연료의 사용으로 기후변화와 해양 산성화가 가속화되고, 바다는 위험에 처했습니다.
+                파괴적인 어업이 해양생물들의 서식지를 파괴하고, 수많은 종을 멸종 위기에 몰아넣고 있습니다.
+                과학자들은 다음 세기 해양 생물의 멸종이 공룡 시대 이후 최악의 멸종이 될 수 있다고 말합니다. 
+                하지만 우리가 이 위기를 막을 수 있습니다.
+                함께 행동한다면 바다와 그 안에 살아가고 있는 생명체를 위기에서 구하고 푸른 지구를 지켜나갈 수 있습니다.</p>
+            <ul class="actions stacked">
+                <li><a href="{%url 'donation:campaign' %}" class="button">Learn More</a></li>
+            </ul>
+        </div>
+        <div class="image">
+            <img src="{% static 'images/펭귄.jpg' %}" alt="" />
+        </div>
+    </section>
+    <br><br>
+    <section class="wrapper style1">
+        <div class="container">
+            <div>
+                <h3 class="text-center">
+                    <i class="fas fa-globe-americas"></i> &nbsp 지구를 위한 매일 챌린지 &nbsp <i class="fas fa-globe-americas"></i>
+                </h3>
+            </div>
+            <table class="table table-striped table-hover mx-auto">
+                <thead>
+                    <tr>
+                        <th>
+                            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                            <b>항목</b>
+                        </th>
+                        <th style="width: 100px;">완료</th>                        
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>멸종위기 해산물 먹지 않기</td>
+                        <td> 
+                            <input type="checkbox" id="jb-checkbox1" class="custom-control-input">
+                            <label class="custom-control-label" for="jb-checkbox1">&nbsp</label>
+                        </td>                        
+                    </tr>
+                    <tr>                        
+                        <td>치어(어린생선)나 생선 알은 먹지 않기</td>
+                        <td>
+                            <input type="checkbox" id="jb-checkbox2" class="custom-control-input">
+                            <label class="custom-control-label" for="jb-checkbox2">&nbsp</label>
+                        </td>                        
+                    </tr>
+                    <tr>                        
+                        <td>해변,모래 사장의 쓰레기 치우기</td>
+                        <td>
+                            <input type="checkbox" id="jb-checkbox3" class="custom-control-input">
+                            <label class="custom-control-label" for="jb-checkbox3">&nbsp</label>
+                        </td>
+                    </tr>
+                    <tr>                        
+                        <td>산호초를 죽이는 무기자외선차단제 쓰지않기</td>
+                        <td>
+                            <input type="checkbox" id="jb-checkbox4" class="custom-control-input">
+                            <label class="custom-control-label" for="jb-checkbox4">&nbsp</label>
+                        </td>
+                    </tr>
+                    <tr>                        
+                        <td>미세 플라스틱이 들어 있는 세안제나 생활용품 사용하지 않기 </td>
+                        <td>
+                            <input type="checkbox" id="jb-checkbox5" class="custom-control-input">
+                            <label class="custom-control-label" for="jb-checkbox5">&nbsp</label>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+
+<!-- Five -->
+    <section class="wrapper style1 align-center">
+        <div class="inner">
+            <h2>후원으로 변화를 만드세요!</h2>
+            <p>바다를 지키기 위해 지금보다 중요한 시기는 없었습니다.</br>
+            바로 지금 행동해야 합니다. 지금 변화에 동참하세요!</p>
+        </div>
+   
+
+        <!-- Gallery -->
+            <div class="gallery style2 medium lightbox onscroll-fade-in">
+                <article>
+                        <img src="{% static 'images/gallery/fulls/소녀.jpg' %}">
+                    </a>
+                    <div class="caption">
+                        <h3>해양쓰레기 줍는 4살 소녀 "안 하면 거북이가 죽으니까요></h3>
+                        <ul class="actions fixed">
+                            <li><a href="https://www.newspenguin.com/news/articleView.html?idxno=5110" span class="button small">Details</a></span></li>
+                        </ul>
+                    </div>
+                </article>
+                <article>
+                        <img src="{% static 'images/gallery/fulls/콧물.jpg' %}" >
+                    </a>
+                    <div class="caption">
+                        <h3>물고기 죽이는 ‘바다 콧물’, 터키 바다 덮었다</h3>
+                        <ul class="actions fixed">
+                            <li><a href="https://kids.donga.com/?ptype=article&no=20210530152857571263" span class="button small">Details</a></span></li>
+                        </ul>
+                    </div>
+                </article>
+                <article>
+                        <img src="{% static 'images/gallery/fulls/빙하.jpg' %}" alt="" />
+                    </a>
+                    <div class="caption">
+                        <h3>사진가 46인 환경작품 모아 ‘환경사진아카이브’ 열어</h3>
+                        <ul class="actions fixed">
+                            <li><a href="https://www.chosun.com/culture-life/culture_general/2021/07/30/Y6GANTALJ5GVVHRYG5QMPDSIWM/" span class="button small">Details</a></span></li>
+                        </ul>
+                    </div>
+                </article>
+                <article>
+                        <img src="{% static 'images/gallery/fulls/고래.jpg' %}" alt="" />
+                    </a>
+                    <div class="caption">
+                        <h3>해양수산부, 좌초·포류 불법 포획된 고래류 위판 금지</h3>
+                        <ul class="actions fixed">
+                            <li><a href="https://cnews.thekpm.com/view.php?ud=2021051915350382542ef4e12e4_17" span class="button small">Details</a></span></li>
+                        </ul>
+                    </div>
+                </article>
+                <article>
+                        <img src="{% static 'images/gallery/fulls/플로깅.jpg' %}" >
+                    </a>
+                    <div class="caption">
+                        <h3>운동하며 환경 지키는 '플로깅' 확산</h3>
+                        <ul class="actions fixed">
+                            <li><a href="https://www.ktv.go.kr/content/view?content_id=630138" span class="button small">Details</a></span></li>
+                        </ul>
+                    </div>
+                </article>
+     </section>
+<!-- Seven -->
+    
+
+
 {% endblock %}

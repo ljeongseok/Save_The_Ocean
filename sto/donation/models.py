@@ -1,24 +1,24 @@
 from django.db import models
-
-
-class Person(models.Model):
-    name = models.CharField(max_length=30)
-    email = models.EmailField(max_length=50)
-    age = models.IntegerField(default=0)
-
-    def __str__(self):
-        return self.name
-
+from django.contrib.auth.models import User
 
 class Donation(models.Model):
-    user = models.ForeignKey('Person',on_delete=models.CASCADE, default='')
-    amount = models.IntegerField(default=0)
-    card = models.CharField(max_length=30)
-    card_num = models.IntegerField(default=0)
+    choice_card = { 
+        ('shinhan', '신한'),
+        ('woori', '우리'),
+        ('hana', '하나'),
+        ('kB', '국민'),
 
-    
+    }   
+
+
+    user = models.ForeignKey(User,on_delete=models.CASCADE, blank=True, null=True )
+    amount = models.IntegerField("금액",default=0)
+    card = models.CharField("카드사", max_length=10, choices = choice_card)
+    card_num = models.IntegerField("카드번호",default=0)
+    create_dt = models.DateField('CREATE DATE', auto_now_add=True,null=True, blank=True)
     def __str__(self):
         return str(self.user)
+
 
 
 

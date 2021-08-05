@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+
+{% block content-header %}
+    <h1 class="text-center"><i class="fas fa-user-plus"></i> 회원 가입</h1>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <form action="." method="post" class="form col-sm-6 mx-auto">
+        {% csrf_token %}
+        {% comment %} form -> context변수 (UserCreationForm의 인스턴스) {% endcomment %}
+        {% bootstrap_form form %}
+        <br>
+        <button type="submit" class=" btn-sm">
+            <i class="fas fa-sign-in-alt"></i> 회원가입</button>
+        </button>
+    </form>
+</div>
+
+{% endblock %}

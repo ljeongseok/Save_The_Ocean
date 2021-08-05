@@ -1,0 +1,159 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap4 %}
+
+<!doctype html>
+<html lang="ko">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    {% block style %}
+    <style>
+        .media-body h4 {
+            margin-top: 80px;
+            margin-bottom: 0px;
+        }
+        .media {
+            
+            border-bottom : solid gray;
+        }
+        .main{
+            border-bottom : solid gray;
+        }
+    </style>
+    {% endblock %}
+
+    {% block content %}
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class='container'>
+        <div class="media ">
+            <img src="{% static 'images/김혜은.jpg' %}" alt="John Doe" class="mr-5 mt-3 mb-3 rounded-circle"
+                style="width:300px;">
+            <div class="media-body">
+                <h4>김혜은</h4>
+                <p>Executive Director</p>
+                <p class="mb-0">phD in Ecology</p>
+                <p>대한민국/서울</p>
+
+
+            </div>
+
+        </div>
+        <div class = 'main'>
+            <p>
+                 <br>김혜은님은 중앙아메리카에서 20년 이상의 경험을 가진 용감한 환경보호 과학자이다.
+                열대 건조림과 태평양 연안 서식지의 독특한 아름다움을 직접 알게 된 후, 그녀는 그들을 보호하기 위해 일생을 바치기로 결심했다.
+                2005년, 그녀는 Paso Pacifico를 설립했고 그 이후로 우리의 전무이사를 맡고 있습니다. 사라의 과학 연구는 열대림 화재의 생태학적 영향과 열대 화재 정권에 영향을 미치는
+                문화적 관행에 초점을 맞추고 있다. 환경 보호 과학자로서, 그녀는 바이오트로피카 저널의 편집 이사회에서 일하고 있습니다. 그녀는 또한 화재 생태학 협회와 소시에다드 중아메리카나 파라라
+                바이오리아 이 콘세르바시온에서 활동했습니다. 그녀는 아쇼카 펠로우이며 기업가정신상과 같은 영예를 수여받았습니다. 사라는 현재 파소 페이시코의 여성 굴 협동조합 지원 프로젝트에 가장 큰
+                관심을 보이고 있습니다. 이는 우리가 하는 일이 서식지 복원, 여성과 아이들에게 힘을 실어주고 경제 생계를 향상시켜주는 것을 상징하기 때문입니다.
+
+            </p>
+
+        </div>
+    </div>
+<br>
+    <div class='container'>
+        <div class="media ">
+            <img src="{% static 'images/김민기.jpg' %}" alt="John Doe" class="mr-5 mt-3 mb-3 rounded-circle"
+                style="width:300px;">
+            <div class="media-body">
+                <h4>김민기</h4>
+                <p>Executive Director</p>
+                <p class="mb-0">phD in Ecology</p>
+                <p>대한민국/서울</p>
+
+
+            </div>
+
+        </div>
+        <div class = 'main'>
+            <p>
+                 <br>김민기님은 Penn State University에서 지리 및 자연 자원 및 환경 박사 과정을 밟고 있습니다. 
+                 그는 인간이 개조한 풍경 속에서 지역 주민들의 생계를 향상시키면서 생물 다양성을 더 잘 보존하는 방법 등 중남미 개발 및 토지 이용 정책의 사회적, 
+                 환경적 영향에 관심이 있다. 김민기님은 2018년부터 파소 페이시코와 협력해 엘살바도르의 환경 및 보존 문제를 이해하고 있다. 
+                 그는 엘살바도르 발사모 해안을 따라 생물 다양성 보존과 지속 가능한 생태관광을 촉진하려는 파소 퍼시픽코의 현재 노력에 가장 흥분하고 있다. 
+                 는 이전에 미국 환경보호청에서 일했으며 파라과이의 평화봉사단에서 활동했습니다.
+
+            </p>
+
+        </div>
+    </div>
+
+<br>
+    <div class='container'>
+        <div class="media ">
+            <img src="{% static 'images/이정석.jpg' %}" alt="John Doe" class="mr-5 mt-3 mb-3 rounded-circle"
+                style="width:300px;">
+            <div class="media-body">
+                <h4>이정석</h4>
+                <p>Executive Director</p>
+                <p class="mb-0">phD in Ecology</p>
+                <p>대한민국/서울</p>
+
+
+            </div>
+
+        </div>
+        <div class = 'main'>
+            <p>
+                 <br>"바다거북이 휴가 때 처음 바다에서 수영하는 것을 본 이후로 저는 이 동물에게 끌렸습니다. 
+                 파소 파시피코에서 지내는 동안 그들이 물 속을 헤엄쳐 다니며 더 많은 것을 알게 된 우아함과 아름다움에 감명을 받았습니다. 
+                 저는 보존에 변화를 줄 수 있는 개인적 기여보다 더 큰 무언가의 일부가 되는 것을 즐깁니다."
+
+            </p>
+
+        </div>
+    </div>
+
+<br>
+    <div class='container'>
+        <div class="media ">
+            <img src="{% static 'images/박재성.jpg' %}" alt="John Doe" class="mr-5 mt-3 mb-3 rounded-circle"
+                style="width:300px;">
+            <div class="media-body">
+                <h4>박재성</h4>
+                <p>Executive Director</p>
+                <p class="mb-0">phD in Ecology</p>
+                <p>대한민국/서울</p>
+
+
+            </div>
+
+        </div>
+        <div class = 'main'>
+            <p>
+                 <br>박재성님은 열대 포유류 보존에 있어 농업과 사람이 관리하는 토지의 역할을 주된 관심사로 하는 자연보호 과학자이다. 
+                 박재성님은 Bosawás 생물권 보호구역의 야생동물 연구와 구름 숲에서 열대 건조 숲에 이르는 생태계에서 선두를 달리고 있습니다.
+                  박재성님은 수년 동안 파소 페이시코의 장기 생물다양성 모니터링 프로그램과 철새, 바다거북, 거미원숭이 등의 종을 대상으로 보존과학의 적용을 조율해왔습니다.
+            </p>
+
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>
+{% endblock  %}
+
+

@@ -1,0 +1,167 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap4 %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>캠페인</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    {%block style%}
+    <style>
+        .achieve{             
+            border-top: 2px solid gray;
+            text-align : center;
+        }
+        .article > div{
+            border: 2px solid black;
+            width: 50%;
+            height: 10%;
+            
+        }
+        .article> div> a{
+            margin-top: 2%;
+            margin-bottom: 2%;
+        }
+      
+    </style> 
+    {%endblock%}
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    {% block content-header%}
+    <h1 class="text-center" style="font-weight: bold; font-size : 40px;">[  멀티캠퍼스 캠페인  ]</h1><br>
+    <p class="text-center" style="font-size: 25px; margin-bottom:5px;">" 멀티캠퍼스에서 진행하는 <i><b><ins>지역 및 글로벌 캠페인</ins></b></i> &nbsp에 대해 자세히 알아보세요." </p>
+    {%endblock%}
+</head>
+  <body>
+    {% block content %}
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card" style="width:100%">
+                    <img class="card-img-top" src="{% static 'images/플라스틱.jpg' %}" alt="Card image">
+                    <div class="card-body">
+                        <h4 class="card-title"><b>플라스틱 프리챌린지</b></h4>
+                        <p class="card-text">플라스틱 줄이는 환경운동 캠페인</p>
+                        <a href="#" class="btn btn-primary">참여하기</a>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="col-md-4">
+                <div class="card" style="width:100%">
+                    <img class="card-img-top" src="{% static 'images/플라스틱2.jpg' %}" alt="Card image">
+                    <div class="card-body">
+                        <h4 class="card-title"><b>플로깅</b></h4>
+                        <p class="card-text">지구를 살리는 아름다운 달리기</p>
+                        <a href="#" class="btn btn-primary">참여하기</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card" style="width:100%">
+                    <img class="card-img-top" src="{% static 'images/바다.jpg' %}" alt="Card image" style="height:auto;">
+                    <div class="card-body">
+                        <h4 class="card-title"><b>海치우자!</b></h4>
+                        <p class="card-text">바다를 지키기 위한 9가지 약속</p>
+                        <a href="#" class="btn btn-primary">참여하기</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="achieve">
+        <h2 style="font-size:40px; font-weight:bold; margin-top:40px;">[  캠페인 성과  ]</h2>
+        <p></p>
+        <h3 style="font-size:30px; font-weight:bold">" 함께라면 우리는 더 큰 변화를 만들 수 있습니다. "</h3>
+        <p></p>
+    </div>
+    <div class="container" >
+        <div class = 'row'>
+            <div class="col-md-4" style="border-right: 1px solid lightgrey; cursor:pointer;", onclick="location.href='https://www.naver.com'">
+                <img src="{% static 'images/b.jpg' %}" style=" float:right; margin-top:40px; margin-left:20px;margin-right:20px; margin-bottom:20px;box-shadow: 5px;">
+                <span style="font-size:13px; color:yellow; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;">기후</span>
+                <span style="font-size:13px;">최신이야기</span>
+                <h4 style="font-weight:bold;">네이버의 100% 재생에너지 로드맵 발표의 의미와 과제 </h4>
+                <p style="font-size:13px;">2021년 07월 01일</p>
+            </div>
+
+            <div class="col-md-4" style="border-right: 1px solid lightgrey;">
+                <img src="{% static 'images/c.jpg' %}" style=" float:right; margin-top:40px; margin-left:20px;margin-right:20px; margin-bottom:20px;box-shadow: 5px;">
+                <span style="font-size:13px; color:blue; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;">해양</span>
+                <span style="font-size:13px;">최신이야기</span>
+                <h4 style="font-weight:bold;">한국 정부, 공해상 30X30 해양보호구역 지지 선언! </h4>
+                <p style="font-size:13px;">2021년 06월 01일</p>
+            </div>
+
+            <div class="col-md-4", onclick="location.href='https://www.naver.com'">
+                <img src="{% static 'images/d.jpg' %}" style=" float:right; margin-top:40px; margin-left:20px;margin-right:20px; margin-bottom:20px;box-shadow: 5px;">
+                <span style="font-size:13px; color:gray; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;">플라스틱</span>
+                <span style="font-size:13px;">최신이야기</span>
+                <h4 style="font-weight:bold;">대만 세븐일레븐 편의점에서 앞으로 OOOO을 볼 수 없다? </h4>
+                <p style="font-size:13px;">2021년 05월 11일</p>
+            </div>
+        </div>
+    </div>
+    <br>
+    
+    <div class="container">
+        <div class = 'row'>
+            <div class="col-md-4" style="border-right: 1px solid lightgrey;", onclick="location.href='https://www.naver.com'">
+                <img src="{% static 'images/e.jpg' %}" style=" float:right; margin-top:40px; margin-left:20px;margin-right:20px; margin-bottom:20px;box-shadow: 5px;">
+                <span style="font-size:13px; color:yellow; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;">기후</span>
+                <span style="font-size:13px;">최신이야기</span>
+                <h4 style="font-weight:bold;">멀티캠퍼스를 유지할 수 있었던 힘 '독립성'</h4>
+                <p style="font-size:13px;">2021년 04월 20일</p>
+            </div>
+
+            <div class="col-md-4" style="border-right: 1px solid lightgrey;", onclick="location.href='https://www.naver.com'">
+                <img src="{% static 'images/f.jpg' %}" style=" float:right; margin-top:40px; margin-left:20px;margin-right:20px; margin-bottom:20px;box-shadow: 5px;">
+                <span style="font-size:13px;">최신이야기</span>
+                <h4 style="font-weight:bold;">2021, 지구를 위한 즐거운 변화들을 소개합니다 </h4>
+                <p style="font-size:13px;">2021년 03월 03일</p>
+            </div>
+
+            <div class="col-md-4", onclick="location.href='https://www.naver.com'">
+                <img src="{% static 'images/a.jpg' %}" style=" float:right; margin-top:40px; margin-left:20px;margin-right:20px; margin-bottom:20px;box-shadow: 5px;">
+                <span style="font-size:13px; color:yellow; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;">기후</span>
+                <span style="font-size:13px;">최신이야기</span>
+                <h4 style="font-weight:bold;">[카드뉴스] 어스앤런 버추얼 달리기로 우리가 만들어낸 변화 </h4>
+                <p style="font-size:13px;">2021년 01월 22일</p>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- <div class="container">
+       
+            <div class="article">
+                <div class="mx-auto">
+                    <a href="{% url 'donation:newsletter' %}"><p>한국 정부, 공해상 30x30 해양보호구역 지지 선언</p></a>
+                </div>
+                <br>
+                <div class="mx-auto" style="cursor:pointer" onclick="location.href='https://www.naver.com'">
+                    <p>대만 세븐 일레븐, 더이상 ㅇㅇㅇㅇ을 볼 수 없다.</p>
+                </div>
+                <br>
+                <div class="mx-auto">
+                    <P>2021 지구를 위한 즐거운 변화들을 소개합니다.</P>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+    
+    {% endblock%}
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>
+    
