@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+
+{% block content-haeder %}
+    <h1><i class="nav-icon fas fa-blog"></i> Post 생성/수정 - {{user}}</h1>
+{% endblock %}
+
+{% block content %}
+    <div>
+        <form action='.' method="post" class="form col-sm-8 mx-auto">
+            {% csrf_token %}
+            {%bootstrap_form form%}
+            
+            <button type="submit" class="btn btn-primary">
+                <i class="fas fa-check"></i> 확인
+            
+            </button>
+            <a href="javascript:history.back()" class="btn btn-primary">
+                <i class="fas fa-undo"></i> 취소
+            
+            </a>
+        </form>
+    </div>
+
+    {% load static %} 
+    {% block style %}
+        <link rel="stylesheet" 
+            href="{% static 'plugins/summernote/summernote-bs4.min.css' %}"> 
+    {% endblock %}
+
+    {% block script %}
+        <script src="{% static 'plugins/summernote/summernote-bs4.min.js' %}"> 
+        </script>
+    <script>
+    $(function () {
+        // Summernote 
+        $('#id_content').summernote({
+            height: 300 
+        }) 
+    }) 
+    </script>
+    {% endblock%}
+
+{% endblock%}

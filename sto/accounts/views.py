@@ -28,7 +28,7 @@ class OwnerOnlyMixin(AccessMixin):
         self.object = self.get_object()     # 모델 인스턴스 얻기
         
         # self.request.user : 로그인 사용자 // self.object. : 북마크
-        if self.request.user != self.object.owner:
+        if self.request.user != self.object.user:
             self.handle_no_permission()
         
         return super().get(request,*args,**kwargs)

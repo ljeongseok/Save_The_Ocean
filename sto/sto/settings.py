@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'bootstrap4',
     'donation',
     'accounts',
+    'board',
 ]
 
 MIDDLEWARE = [

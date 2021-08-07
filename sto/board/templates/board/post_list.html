@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap4 %}
+
+{% block content-header %}  
+<h2 style ="font-weight:bold; margin-top:10px; margin-bottom:5px; margin-left:30px">자유게시판</h2>
+{% endblock %} 
+
+{% block content %}
+    <br>
+    <div class="container">
+        <table class="table-striped table-hover" >
+            <thead>
+                <tr style="text-align:center">
+                    <th style="width:10px">No</th>
+                    <th >제목</th>
+                    <th style="width:150px">글쓴이</th>
+                    <th style="width:150px">등록일</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for writing in posts%}
+                <tr  style="cursor:pointer;" onclick="location.href='{{writing.get_absolute_url}}'">
+                    <td>{{writing.id}}</td>
+                    <td>{{writing.title}}</td>
+                    <td>{{writing.user}}</td>
+                    <td>{{writing.create_dt|date:"Y-m-d"}}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        
+        <span>
+            <ul class="pagination pagination-sm justify-content-center" style="margin-bottom:0px">
+                <li class="page-item"><a class="page-link" href="?page=1"><i class="fas fa-angle-double-left"></i></a>
+                </li>
+                {% for page_num in page_obj.paginator.page_range %}
+                    {% comment %} <a href="?page={{page_num}}">{{page_num}}</a> {% endcomment %}
+                    <li class="page-item"><a class="page-link" href="?page={{page_num}}">{{page_num}}</a></li>
+                {% endfor %}
+                <li class="page-item"><a class="page-link" href="?page={{page_obj.paginator.num_pages}}"><i class="fas fa-angle-double-right"></i></a>
+                </li>
+            </ul> 
+        </span>
+        
+        <div class="text-right" style="margin-bottom:30px;margin-top:0px">
+            <a href="{%url 'board:add' %}" class="btn btn-primary btn-sm ">
+            <i class="fas fa-pencil-alt"></i> 쓰기</a>
+        </div>
+        
+    
+{% endblock %}

@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% block content-header %}
+
+
+
+{% endblock %}
+
+{% block content%}
+
+<div class="container">
+
+    <h1 style=" font-size:40px; font-weight: bold; margin-bottom: 0px;"><i class="fas fa-fish"></i> {{object.title}}
+    </h1>
+
+    <P style="font-size:13px; margin-top:2px; border-bottom: 1px solid black;">[작성일 : {{object.modify_dt|date:"Y-m-d"}}]
+        [작성자 : {{user}}]</P>
+    <div>
+        {% autoescape off %}
+        {{ object.content }}
+        {% endautoescape%}
+    </div>
+
+    {% comment %} <p>
+        {%if object.get_previous %}
+        <a href="{{object.get_previous.get_absolute_url}}" title="이전 글">prev</a>
+        {%endif%}
+        {%if object.get_next %}
+        <a href="{{object.get_next.get_absolute_url}}" title="다음 글">next</a>
+        {%endif%}
+    </p> {% endcomment %}
+
+    {% if user == post.user %}
+    <div class="text-right">
+        <a href="{% url 'board:update' post.id %}" class="mr-3">
+            <i class="far fa-edit"></i> 수정</a>
+        <a href="javascript:deletePost('{% url 'board:delete' post.id %}')" class="text-danger mr-3"><i
+                class="fas fa-trash"></i> 삭제</a>
+    </div>
+    {% endif %}
+
+    <form action="{% url 'board:comment' post.pk %}" method="POST">
+        {%csrf_token%}
+        <input type="hidden" name="post" value="{{post.pk}}">
+        <input type="text" name="content" placeholder="Write your comments">
+        <input type="submit" value="Write" />
+    </form>
+
+    {% for comment in post.comments.all %}
+        <div class="comment">
+            <div class="date">{{comment.comment_date}}</div>
+            <a>{{comment.comment_writer}}</a>
+            <p>{{comment.comment_contents}}</p>
+        </div>
+    
+    {%empty%}
+        <p>No comment</p>
+    {% endfor %}
+
+
+</div>
+
+
+
+{% endblock %}
+
+{% block script %}
+<script>
+    function deletePost(url) {
+        if (!confirm('삭제할까요?')) {
+            return
+        }
+        location = url
+    }
+</script>
+{% endblock %}

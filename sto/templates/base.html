@@ -11,6 +11,7 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 
+		<link rel="stylesheet" href="{% static 'plugins/fontawesome-free/css/all.min.css' %}">
 		<link rel="stylesheet" href="{% static 'adminlte/css/adminlte.min.css' %}">
 		<link rel="stylesheet" href="{% static 'assets/css/main.css' %}" />
 		{% block style %}{% endblock%}
@@ -45,6 +46,9 @@
 		<script src="{% static 'assets/js/breakpoints.min.js' %}"></script>
 		<script src="{% static 'assets/js/util.js' %}"></script>
 		<script src="{% static 'assets/js/main.js' %}"></script>
-
+		<script src="{% static 'plugins/jquery/jquery.min.js' %}"></script>
+    	<script src="{% static 'plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    	<script src="{% static 'adminlte/js/adminlte.min.js' %}"></script>
+		{% block script %}{% endblock%}
 	</body>
 </html>
