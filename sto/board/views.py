@@ -7,7 +7,7 @@ from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 from accounts.views import OwnerOnlyMixin
 from django.contrib.auth.models import User
-# from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect
 from django.urls import reverse
 
 class PostListView(ListView):
@@ -66,6 +66,14 @@ def comment_create(request, pk):
         return HttpResponseRedirect(reverse('board:detail', args=(post.id,)))
 
 
+def likes(request,pk):
+    post = get_object_or_404(Post, id=pk)
+    if request.user in post.like.all():
+        post.like.remove(request.user)
+    else:
+        post.like.add(request.user)
+
+    return HttpResponseRedirect(reverse('board:detail', args=(post.id,)))
 
 
 

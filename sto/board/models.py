@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.urls import reverse 
+from django.conf import settings
 # Create your models here.
 
 class Post(models.Model):
@@ -16,6 +17,8 @@ class Post(models.Model):
 
     hits = models.PositiveIntegerField("조회수",default=0)
 
+    like = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="like_posts", blank=True)
+    
     class Meta:
         verbose_name = 'post'
         verbose_name_plural = 'posts'
@@ -52,3 +55,6 @@ class Comment(models.Model):
 
     class Meta:
         ordering=['-id']
+
+    def __str__(self):
+        return self.comment_contents
