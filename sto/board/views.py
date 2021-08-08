@@ -54,11 +54,16 @@ def comment_create(request, pk):
     user = request.user
 
     post = Post.objects.get(pk=post_id)
-    comment = Comment(post=post, comment_contents = content, comment_writer=user)
-    comment.save()
-    # print('----- db 저장 ')
-    # 리다이렉트 --> 
-    return HttpResponseRedirect(reverse('board:detail', args=(post.id,)))
+    
+    if content=='':
+        return HttpResponseRedirect(reverse('board:detail', args=(post.id,)))    
+    
+    else:
+        comment = Comment(post=post, comment_contents = content, comment_writer=user)
+        comment.save()
+        # print('----- db 저장 ')
+        # 리다이렉트 --> 
+        return HttpResponseRedirect(reverse('board:detail', args=(post.id,)))
 
 
 

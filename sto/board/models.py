@@ -14,6 +14,8 @@ class Post(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE,
         verbose_name='USER', blank=True, null=True)
 
+    hits = models.PositiveIntegerField("조회수",default=0)
+
     class Meta:
         verbose_name = 'post'
         verbose_name_plural = 'posts'
@@ -36,6 +38,10 @@ class Post(models.Model):
         #필드 조정 필요시 작성
         super().save(*args,**kwargs)
 
+    @property
+    def hits_count(self):
+        self.hits = self.hits + 1
+        self.save()
 
 class Comment(models.Model):
     post=models.ForeignKey(Post, on_delete=models.CASCADE, null=True,
