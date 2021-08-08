@@ -47,25 +47,31 @@
     <div class="row">
       {% comment %} <div class="com-md-2">
       </div> {% endcomment %}
-          <div class="col-md-4 font-weight-bold">
+          <div class="col-md-3 font-weight-bold">
             
             <p><i class="far fa-calendar-check"></i></p>
             <p>후원시작일</p>
             <p>{{object.create_dt|date:"Y-m-d"}}</p>
           </div>
 
-          <div class="col-md-4 font-weight-bold">
+          <div class="col-md-3 font-weight-bold">
             <p><i class="far fa-money-bill-alt"></i></p>
             <p>후원내용</p>
             <p>{{object.amount}}</p>
-
           </div>
 
-          <div class="col-md-4 font-weight-bold">
+          <div class="col-md-3 font-weight-bold">
             <p><i class="fas fa-credit-card"></i></p>
             <p>납부방법</p>
             <p>{{object.get_card_display}}</p>
           </div>
+
+          <div class="col-md-3 font-weight-bold">
+            <p><i class="fas fa-credit-card"></i></p>
+            <p>총 납부금액</p>
+            <p>{{total}}</p>
+          </div>
+
         </div> 
       </div>
     </div>
