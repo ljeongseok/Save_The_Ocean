@@ -24,5 +24,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('donation/', include('donation.urls')),
     path('donationf/',include('donation.urls')),
-    path('board/',include('board.urls'))
+    path('board/',include('board.urls')),
+    path('funding/', include('funding.urls')),
 ]

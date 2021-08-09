@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap4 %}
+
+
+{% block content %}
+<div class="container">
+    <div class="row mt-3">
+        <!-- 좌측 화면 -->
+        <div class="col-md-7">
+            {% include './common.html' %}
+        </div>
+        
+        <!-- 우측 화면-->
+        <div class="col-md-5">
+            <div>
+                {% comment %} <div style="border-bottom: 2px solid #00cca3;"><h3>{{remaining}}일 남음</h3></div> {% endcomment %}
+                <div>170% 달성</div>
+                <div>10000000원 펀딩</div>
+                <div>17명의 서포터</div>
+            </div>
+            <button style=" background-color:#00cca3; text-align:center;cursor:pointer;">펀딩하기</button>
+            <div class="row">
+                <div class="col-md-4"><i class="far fa-heart"></i> 48</div>
+                <div class="col-md-4">문의</div>
+                <div class="col-md-4">공유하기</div>
+            </div>
+            <div>
+                <ul>
+                    {% for i in object_list%}
+                    <a class="button big wide smooth-scroll-middle" href="{%url 'funding:funding_detail' i.id %}" style=" background-color:#00cca3; text-align:center;cursor:pointer;">
+                        {{i.product}}</a><br>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock  %}
+
+
+

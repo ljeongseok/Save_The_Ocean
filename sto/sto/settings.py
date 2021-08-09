@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'donation',
     'accounts',
     'board',
+    'funding',
 ]
 
 MIDDLEWARE = [

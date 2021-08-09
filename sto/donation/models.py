@@ -7,7 +7,6 @@ class Donation(models.Model):
         ('woori', '우리'),
         ('hana', '하나'),
         ('kB', '국민'),
-
     }   
 
 
@@ -18,7 +17,3 @@ class Donation(models.Model):
     create_dt = models.DateField('CREATE DATE', auto_now_add=True,null=True, blank=True)
     def __str__(self):
         return str(self.user)
-
-
-
-
