@@ -11,6 +11,7 @@ class FundingInfo(models.Model):
     goal_price = models.IntegerField(default=0)
     price = models.IntegerField(default=0)
 
+    
     def __str__(self):
         return self.title
 
@@ -19,9 +20,9 @@ class FundingInfo(models.Model):
 class Funding(models.Model):
 
     user = models.ForeignKey(User,on_delete=models.CASCADE,
-    verbose_name='USER', blank=True, null=True)
+        verbose_name='USER', blank=True, null=True)
     funding_info = models.ForeignKey(FundingInfo,on_delete=models.CASCADE,
-    verbose_name='Funding Info.', blank=True, null=True)
+        verbose_name='Funding Info.', blank=True, null=True)
     cash = models.IntegerField(default=0)
     
     
@@ -29,5 +30,3 @@ class Funding(models.Model):
 
     # def get_absolute_url(self):
     #     return reverse('funding:funding_detail', args=(self.id,))
-
-

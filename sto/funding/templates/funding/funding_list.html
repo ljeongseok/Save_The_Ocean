@@ -2,6 +2,9 @@
 {% load static %}
 {% load bootstrap4 %}
 
+{% block content-header %}
+    <h3 class="text-center mt-2 mb-0"><b>[플라스틱과 맞바꾼 텀블러]오늘도, 내일도 환경을 생각하는 #원그린보틀</b></h3>
+{% endblock%}
 
 {% block content %}
 <div class="container">
@@ -14,12 +17,14 @@
         <!-- 우측 화면-->
         <div class="col-md-5">
             <div>
-                {% comment %} <div style="border-bottom: 2px solid #00cca3;"><h3>{{remaining}}일 남음</h3></div> {% endcomment %}
-                <div>170% 달성</div>
-                <div>10000000원 펀딩</div>
-                <div>17명의 서포터</div>
+                <h2>{{object.title}}</h2>
+                <div style="border-bottom: 2px solid #00cca3;"><h3>{{remaining.days}}일 남음</h3></div>
+                <div>{{rate}}% 달성</div>
+                <div>{{total}}원 펀딩</div>
+                <div>{{count}}명의 서포터</div>
             </div>
-            <button style=" background-color:#00cca3; text-align:center;cursor:pointer;">펀딩하기</button>
+            <a class="button big wide smooth-scroll-middle" style=" background-color:#00cca3; text-align:center;cursor:pointer;"
+                    href="{% url 'funding:create' %}">펀딩하기</a>
             <div class="row">
                 <div class="col-md-4"><i class="far fa-heart"></i> 48</div>
                 <div class="col-md-4">문의</div>
@@ -29,7 +34,7 @@
                 <ul>
                     {% for i in object_list%}
                     <a class="button big wide smooth-scroll-middle" href="{%url 'funding:funding_detail' i.id %}" style=" background-color:#00cca3; text-align:center;cursor:pointer;">
-                        {{i.product}}</a><br>
+                        {{i.user}}님 {{i.cash}}원 후원</a><br>
                     {% endfor %}
                 </ul>
             </div>

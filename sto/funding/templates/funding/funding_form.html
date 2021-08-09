@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap4 %}
+
+{% block content-header %}
+    <h3 class="text-center mt-2 mb-0"><b>[플라스틱과 맞바꾼 텀블러]오늘도, 내일도 환경을 생각하는 #원그린보틀</b></h3>
+{% endblock%}
+
+{% block content %}
+<div class="container">
+    <div class="row mt-3">
+        <!-- 좌측 화면 -->
+        <div class="col-md-7">
+            {% include './common.html' %}
+        </div>
+        
+        <!-- 우측 화면-->
+        <div class="col-md-5">
+            <div style="border-bottom: 2px solid #00cca3; margin-top:76px;margin-bottom:30px">
+                <h3>리워드 선택</h3>
+            </div>
+            
+            <div class= "">
+                <form action="." method="post" class="form col-sm-10 mx-auto">
+                    {% csrf_token %}
+                    {% bootstrap_form form %}
+                    <button  onclick="javascript:history.back()" class="btn float-right btn-sm">
+                        <i class="fas fa-undo"></i> 취소
+                    </button>
+                    <button type="submit" class="btn float-right btn-sm">
+                            <i class="fas fa-sign-in-alt"></i> 확인</button>
+                    </button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock  %}
+
+
+

@@ -7,4 +7,5 @@ urlpatterns = [
     path('',FundingTemplateView.as_view(),name ='index'),
     path('list/',FundingListView.as_view(),name ='funding'),
     path('<int:pk>/',FundingDetailView.as_view(),name ='funding_detail'),
+    path('add/',FundingCreateView.as_view(),name ='create'),
 ]
