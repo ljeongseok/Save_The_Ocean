@@ -16,27 +16,73 @@
         
         <!-- 우측 화면-->
         <div class="col-md-5">
+            <!--펀딩 정보-->
             <div>
-                <h2>{{object.title}}</h2>
-                <div style="border-bottom: 2px solid #00cca3;"><h3>{{remaining.days}}일 남음</h3></div>
-                <div>{{rate}}% 달성</div>
-                <div>{{total}}원 펀딩</div>
-                <div>{{count}}명의 서포터</div>
+                <div style="border-bottom: 2px solid #00cca3;margin-top:56px">
+                    <h2 class="mb-0">{{remaining.days}}일 남음</h2>
+                        <span style="font-size:15px;">
+                            __이 펀딩이 좋으시다면 하트를 눌러주세요!
+                            {% if user.is_active %}
+                            {% if user in object.like.all %}
+                                <a href="{% url 'funding:like' object.id %}" >
+                                <i class="fas fa-heart ml-2"></i></a>
+                            {% else %}
+                                <a href="{% url 'funding:like' object.id %}" >
+                                <i class="far fa-heart ml-2"></i></a>
+                            {% endif %}
+                            &nbsp{{object.like.count}}
+                            {% else %}
+                                <i class="far fa-heart mr-2"></i><span style="font-ize:20px; margin-left:8px">{{object.like.count}}</span>
+                            {% endif %}
+                        </span>
+                    
+                </div>
+                <div class="mt-2 mb-2" style="font-size:30px">{{rate}}% 달성</div>
+                <div class="mt-2 mb-2" style="font-size:30px">{{total}}원 펀딩</div>
+                <div class="mt-2 mb-2" style="font-size:30px">{{count}}명의 서포터</div>
             </div>
-            <a class="button big wide smooth-scroll-middle" style=" background-color:#00cca3; text-align:center;cursor:pointer;"
+            {% if user.is_active %}
+                <a class="button big wide smooth-scroll-middle mt-3 mb-3"
+                    style="margin-left:30px; width:100%; background-color:#00cca3; text-align:center;cursor:pointer; "
                     href="{% url 'funding:create' %}">펀딩하기</a>
-            <div class="row">
-                <div class="col-md-4"><i class="far fa-heart"></i> 48</div>
-                <div class="col-md-4">문의</div>
-                <div class="col-md-4">공유하기</div>
-            </div>
+            {% else %}
+                <a class="button big wide smooth-scroll-middle mt-3 mb-3"
+                    style="margin-left:30px; width:100%; background-color:#00cca3; text-align:center;cursor:pointer; "
+                    href="{% url 'login' %}">펀딩하기</a>
+
+            {% endif %}
+
+            
+
             <div>
-                <ul>
-                    {% for i in object_list%}
-                    <a class="button big wide smooth-scroll-middle" href="{%url 'funding:funding_detail' i.id %}" style=" background-color:#00cca3; text-align:center;cursor:pointer;">
-                        {{i.user}}님 {{i.cash}}원 후원</a><br>
-                    {% endfor %}
+                <ul class="mt-3">
+                    <b style="background-color: #FFFF00">**READ ME@: 펀딩하기 전에 꼭 한번 읽어주세요!**</b>
+                    <li class="mt-2">[리워드형] 제품가격은 {{object.price}}원입니다. 따라서 {{object.price}}원~30000원 미만 펀딩 시 제품 1개를 받아보실 수 있고, 30000~45000원 미만 제품 2개 받아보실 수 있습니다. 1인당 주문 가능한 수량은 최대2개입니다.</li>
+                    <li class="mt-2">[후원형] 제품 가격 {{object.price}}보다 낮은 금액을 펀딩하실 경우, 단순 후원으로 처리가 됩니다. </li>
+                    <li class="mt-2">위 두가지 펀딩 유형의 차이점을 숙지하시고, 펀딩에 참여해주시길 바랍니다. 건강한 지구를 위해 함께 해주시는 모든 여러분들께 감사의 말씀드리며, 궁금하신 사항은 언제든 010-1234-1234로 연락 혹은 문자 주시기 바랍니다.</li> 
                 </ul>
+            </div>
+
+            <div>
+                <h3>펀딩 현황</h3>
+                <table class="table table-striped table-hover mx-auto">
+                    <thead>
+                        <tr>
+                            <th><b>서포터</b></th>
+                            <th style="width: 100px;">펀딩</th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for i in object_list %}
+                            <tr>
+                                <td>{{i.user}}</td>
+                                <td>{{i.cash}}</td>
+                                
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
             </div>
         </div>
 

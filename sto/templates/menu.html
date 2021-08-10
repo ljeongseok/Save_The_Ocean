@@ -11,6 +11,16 @@
          <li class="nav-item">
                 <a class="nav-link" href="{% url 'donation:intro' %}"><i class="fas fa-users"></i> About_Us</a>
             </li>
+            {% if user.is_active %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'donation:donation_check' %}"><i class="fas fa-newspaper"></i> Donation</a>
+                </li>
+            {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'login' %}"><i class="fas fa-newspaper"></i> Donation</a>
+                </li>
+            {% endif %}
+            
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'donation:newsletter' %}"><i class="fas fa-newspaper"></i> NewsLetter</a>
             </li>
@@ -18,18 +28,34 @@
                 <a class="nav-link" href="{%url 'board:list' %}"><i class="fas fa-clipboard-list"></i> Board</a>
             <li class="nav-item">
                 
-                <a class="nav-link" href="{%url 'funding:index' %}"><i class="fas fa-clipboard-list"></i> Funding</a>
+                <a class="nav-link" href="{%url 'funding:funding' %}"><i class="fas fa-clipboard-list"></i> Funding</a>
             </li>
         </ul>
         <!-- 우측메뉴 구성 -->
         <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-                {% if user.is_active %}
-                <a class="nav-link" href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i> 로그아웃</a>
-                {% else %}
-
-                {% endif %}
+            {% if user.is_active %}
+            <!-- 로그인 상태 -->
+            <li class="nav-item d-none d-sm-inline-block">
+                <a class="nav-link" href="{% url 'password_change' %}">
+                
+                {% comment %} {{user.username}} = 현재 사용자 id {% endcomment %}
+                    <i class="fas fa-user"></i> {{user.username}}</a>
             </li>
+            <li class="nav-item d-none d-sm-inline-block">
+                <a class="nav-link" href="{% url 'logout' %}">
+                    <i class="fas fa-sign-out-alt"></i> 로그아웃</a>
+            </li>
+            {% else %}
+            <!-- 로그아웃 상태 -->
+            <li class="nav-item d-none d-sm-inline-block">
+                <a class="nav-link" href="{% url 'login' %}">
+                    <i class="fas fa-sign-in-alt"></i> 로그인</a>
+            </li>
+            <li class="nav-item d-none d-sm-inline-block">
+                <a class="nav-link" href="{% url 'accounts:register' %}">
+                    <i class="fas fa-user-plus"></i> 회원가입</a>
+            </li>
+            {% endif %}
         </ul>
         <!-- 우측메뉴 구성 끝 -->
     </div>

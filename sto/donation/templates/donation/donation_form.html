@@ -6,6 +6,40 @@
     
 {% endblock %}
 
+{% block style%}
+    <style>
+        #ContentMessage {
+            position: relative;
+            top: -60px;
+            padding: 20px 60px 10px;
+            background-color: #80c342;
+            
+
+            width : 90%;
+            margin-left: 40px;
+        }
+
+        .content-home__title{
+            color: #fff;
+            font-weight: 1000;
+        }
+
+        .content-message__title {
+            display: block;
+            margin: 0;
+            width: 100%;
+            line-height: 120%;
+            padding: 24px 0;
+            border-color: #80c342;
+            border-width: 1px 0;
+            border-style: solid;
+            color: #80c342;
+            text-align: center;
+        }
+    </style>
+{% endblock%}
+
+
 {% block content %}
 
 <div class="row mt-3">
@@ -19,38 +53,7 @@
         </div>
         <br>
         {% comment %} 컨텐트 메시지 스타일 {% endcomment %}
-        {% block style%}
-            <style>
-                #ContentMessage {
-                    position: relative;
-                    top: -60px;
-                    padding: 20px 60px 10px;
-                    background-color: #80c342;
-                    
-
-                    width : 90%;
-                    margin-left: 40px;
-                }
-
-                .content-home__title{
-                    color: #fff;
-                    font-weight: 1000;
-                }
-
-                .content-message__title {
-                    display: block;
-                    margin: 0;
-                    width: 100%;
-                    line-height: 120%;
-                    padding: 24px 0;
-                    border-color: #80c342;
-                    border-width: 1px 0;
-                    border-style: solid;
-                    color: #80c342;
-                    text-align: center;
-                }
-            </style>
-        {% endblock%}
+        
 
         <div id = "ContentMessage" class="wide img-fluid">
             <h2 class="content-home__title">

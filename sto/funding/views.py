@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views import generic
 from django.views.generic import ListView, DetailView
 from django.views.generic.base import TemplateView
@@ -6,6 +6,9 @@ from django.views.generic.edit import CreateView
 from funding.models import Funding, FundingInfo
 from datetime import datetime
 from django.urls import reverse_lazy
+from django.http.response import HttpResponseRedirect
+from django.urls import reverse
+
 # Create your views here.
 
 class FundingTemplateView(TemplateView):
@@ -58,8 +61,8 @@ class FundingDetailView(DetailView):
 
 class FundingCreateView(CreateView):
     model = Funding
-    fields = ['cash','funding_info']
-    success_url = reverse_lazy('funding:index')
+    fields = ['cash','funding_info', 'card','card_num','color']
+    success_url = reverse_lazy('funding:funding')
 
     def form_valid(self, form):
         form.instance.user = self.request.user
@@ -67,6 +70,14 @@ class FundingCreateView(CreateView):
         return super().form_valid(form)
 
 
+def likes(request,pk):
+    post = get_object_or_404(FundingInfo, id=pk)
+    if request.user in post.like.all():
+        post.like.remove(request.user)
+    else:
+        post.like.add(request.user)
+
+    return HttpResponseRedirect(reverse('funding:funding'))
 
    
 # def get_context_data(self, **kwargs):

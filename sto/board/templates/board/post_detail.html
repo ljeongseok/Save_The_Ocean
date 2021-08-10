@@ -31,14 +31,13 @@
     <div class="text-right">
         {% if user.is_active %}
             {% if user in post.like.all %}
-                <a href="{% url 'board:like' post.id %}" >
-                <i class="fas fa-heart"></i>
+                <a href="{% url 'board:like' post.id %}">
+                <i class="fas fa-heart"></i></a>
             {% else %}
-                <a href="{% url 'board:like' post.id %}" >
-                <i class="far fa-heart"></i>
+                <a href="{% url 'board:like' post.id %}">
+                <i class="far fa-heart"></i></a>
             {% endif %}
-        </a>
-        <span style="font-size:20px; margin-left:8px">{{post.like.count}}</span>
+            {{post.like.count}}
         {% else %}
             <i class="far fa-heart mr-2"></i><span style="font-size:20px; margin-left:8px">{{post.like.count}}</span>
         {% endif %}
