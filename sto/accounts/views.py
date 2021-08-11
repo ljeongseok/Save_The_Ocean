@@ -32,3 +32,6 @@ class OwnerOnlyMixin(AccessMixin):
             self.handle_no_permission()
         
         return super().get(request,*args,**kwargs)
+
+# 로그인 성공 리디이렉트
+# return redirect(self.request.GET.get('next'))

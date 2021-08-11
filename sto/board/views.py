@@ -9,12 +9,13 @@ from accounts.views import OwnerOnlyMixin
 from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+from django.core.paginator import Paginator 
 
 class PostListView(ListView):
     model = Post
     template_name = 'board/post_list.html'
     context_object_name='posts'
-    paginate_by = 10
+    paginate_by = 1
 
     def get_context_data(self, **kwargs):
         return super().get_context_data(**kwargs)

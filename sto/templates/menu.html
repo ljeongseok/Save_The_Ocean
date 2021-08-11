@@ -1,7 +1,13 @@
+<style>
+    #id1 {
+    
+    }
+</style>
 <nav class="navbar navbar-expand-md bg-primary navbar-dark sticky-top">
-    <a class="navbar-brand" href="{% url 'home' %}">
-        <i class="fas fa-globe-americas"></i> Home
-    </a>
+    <div class="nav-link" style=" cursor:pointer; letter-spacing:1px; font-weight:600;" id="id1"
+            onclick="location.href='{% url 'home' %}'">
+        <i class="fas fa-globe-americas"></i> Home</div>        
+        {% comment %} <i class="fas fa-globe-americas"></i> Home {% endcomment %}
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -9,27 +15,40 @@
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="navbar-nav">
          <li class="nav-item">
-                <a class="nav-link" href="{% url 'donation:intro' %}"><i class="fas fa-users"></i> About_Us</a>
+                <div class="nav-link" style="opacity:0.8; cursor:pointer; letter-spacing:1px; font-weight:600"
+                        onclick="location.href='{% url 'donation:intro' %}'">
+                    <i class="fas fa-users"></i> About_Us</div>
+                {% comment %} <a class="nav-link" href="{% url 'donation:intro' %}"><i class="fas fa-users"></i> About_Us</a> {% endcomment %}
             </li>
             {% if user.is_active %}
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'donation:donation_check' %}"><i class="fas fa-newspaper"></i> Donation</a>
+                    <div class="nav-link" style="opacity:0.8; cursor:pointer; letter-spacing:1px; font-weight:600"
+                        onclick="location.href='{% url 'donation:donation_check' %}'">
+                    <i class="fas fa-newspaper"></i> Donation</div>
                 </li>
             {% else %}
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'login' %}"><i class="fas fa-newspaper"></i> Donation</a>
+                    <div class="nav-link" style="opacity:0.8; cursor:pointer; letter-spacing:1px; font-weight:600"
+                        onclick="location.href='{% url 'login' %}'">
+                    <i class="fas fa-newspaper"></i> Donation</div>
                 </li>
             {% endif %}
             
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'donation:newsletter' %}"><i class="fas fa-newspaper"></i> NewsLetter</a>
+                <div class="nav-link" style="opacity:0.8; cursor:pointer; letter-spacing:1px; font-weight:600"
+                    onclick="location.href='{% url 'donation:newsletter' %}'">
+                    <i class="fas fa-newspaper"></i> NewsLetter</div>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{%url 'board:list' %}"><i class="fas fa-clipboard-list"></i> Board</a>
+                <div class="nav-link" style="opacity:0.8; cursor:pointer; letter-spacing:1px; font-weight:600"
+                    onclick="location.href='{% url 'board:list' %}'">
+                    <i class="fas fa-clipboard-list"></i> Board</div>
             <li class="nav-item">
-                
-                <a class="nav-link" href="{%url 'funding:funding' %}"><i class="fas fa-clipboard-list"></i> Funding</a>
+                 {% comment %} style= onclick="location.href='{{writing.get_absolute_url}}'" {% endcomment %}
+                <div class="nav-link" style="opacity:0.8; cursor:pointer; letter-spacing:1px; font-weight:600" onclick="location.href='{% url 'funding:funding' %}'">
+                    <i class="fas fa-clipboard-list"></i> Funding</div>
             </li>
+            
         </ul>
         <!-- 우측메뉴 구성 -->
         <ul class="navbar-nav ml-auto">
