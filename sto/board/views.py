@@ -15,10 +15,16 @@ class PostListView(ListView):
     model = Post
     template_name = 'board/post_list.html'
     context_object_name='posts'
-    paginate_by = 1
+    paginate_by = 5
 
     def get_context_data(self, **kwargs):
-        return super().get_context_data(**kwargs)
+        context = super().get_context_data(**kwargs)
+
+        likes=[ post for post in Post.objects.all() if post.like.count() > 0 ]
+        likes.sort(key=lambda p : p.like.count(), reverse=True)
+        context['likes'] = likes
+        
+        return context
 
 
 class PostDetailView(DetailView):

@@ -23,16 +23,16 @@
                         <span style="font-size:15px;">
                             __이 펀딩이 좋으시다면 하트를 눌러주세요!
                             {% if user.is_active %}
-                            {% if user in object.like.all %}
-                                <a href="{% url 'funding:like' object.id %}" >
-                                <i class="fas fa-heart ml-2"></i></a>
+                                {% if user in object.like.all %}
+                                    <a href="{% url 'funding:like' object.id %}" >
+                                    <i class="fas fa-heart ml-2" style="color:red;"></i></a>
+                                {% else %}
+                                    <a href="{% url 'funding:like' object.id %}" >
+                                    <i class="far fa-heart ml-2"></i></a>
+                                {% endif %}
+                                &nbsp{{object.like.count}}
                             {% else %}
-                                <a href="{% url 'funding:like' object.id %}" >
-                                <i class="far fa-heart ml-2"></i></a>
-                            {% endif %}
-                            &nbsp{{object.like.count}}
-                            {% else %}
-                                <i class="far fa-heart mr-2"></i><span style="font-ize:20px; margin-left:8px">{{object.like.count}}</span>
+                                <i class="far fa-heart ml-2 mr-1"></i>{{object.like.count}}
                             {% endif %}
                         </span>
                     

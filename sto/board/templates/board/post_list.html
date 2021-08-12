@@ -9,50 +9,69 @@
 {% block content %}
     <br>
     <div class="container">
-        <table class="table-striped table-hover" >
-            <thead>
-                <tr>
-                    <th style="width:20px">No</th>
-                    <th style="padding-top:10px" >제목</th>
-                    <th style="width:120px" class="text-center">글쓴이</th>
-                    <th style="width:120px" class="text-center">등록일</th>
-                    <th style="width:80px" class="text-center">조회수</th>
-                </tr>
-            </thead>
-            <tbody>
-            {% for writing in posts%}
-                <tr  style="cursor:pointer;" onclick="location.href='{{writing.get_absolute_url}}'">
-                    <td>{{writing.id}}</td>
-                    <td>{{writing.title}}</td>
-                    <td class="text-center">{{writing.user}}</td>
-                    <td class="text-center">{{writing.create_dt|date:"Y-m-d"}}</td>
-                    <td class="text-center">{{writing.hits}}</td>
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
-        <div style="width:400px; margin-left:auto; margin-right:auto;">
-            {% bootstrap_pagination page_obj pages_to_show='5'%}
+        <div class="row">
+            <div class ="col-md-10">
+                <table class="table-striped table-hover" >
+                    <thead>
+                        <tr>
+                            <th style="width:20px">No</th>
+                            <th style="padding-top:10px " >제목</th>
+                            <th style="width:120px" class="text-center">글쓴이</th>
+                            <th style="width:120px" class="text-center">등록일</th>
+                            <th style="width:80px" class="text-center">조회수</th>
+                            <th style="width:80px" class="text-center">추천</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for writing in posts%}
+                        <tr  style="cursor:pointer;" onclick="location.href='{{writing.get_absolute_url}}'">
+                            <td>{{writing.id}}</td>
+                            <td style="white-space:nowrap; overflow:hidden;text-overflow:ellipsis;">{{writing.title}}</td>
+                            <td class="text-center">{{writing.user}}</td>
+                            <td class="text-center">{{writing.create_dt|date:"Y-m-d"}}</td>
+                            <td class="text-center">{{writing.hits}}</td>
+                            <td class="text-center">{{writing.like.count}}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                <div style="width:400px; margin-left:auto; margin-right:auto;">
+                    {% bootstrap_pagination page_obj pages_to_show='5'%}
+                </div>
+                {% comment %} 
+                    <ul class="pagination pagination-sm justify-content-center" style="margin-bottom:0px">
+                    <li class="page-item"><a class="page-link" href="?page=1"><i class="fas fa-angle-double-left"></i></a>
+                    </li>
+                    {% for page_num in page_obj.paginator.page_range %}
+                        {% if page_num >= page_obj.number|add:-2 and page_num <= page_obj.number|add:2 %}
+                            <li class="page-item"><a class="page-link" href="?page={{page_num}}">{{page_num}}</a></li>
+                        {%endif%}
+                    {% endfor %}
+                    <li class="page-item"><a class="page-link" href="?page={{page_obj.paginator.num_pages}}"><i class="fas fa-angle-double-right"></i></a>
+                    </li>
+                </ul>  
+                {% endcomment %}
+            
+                <div class="text-right" style="margin-bottom:30px;margin-top:0px">
+                    <a href="{%url 'board:add' %}" class="btn btn-primary btn-sm ">
+                    <i class="fas fa-pencil-alt"></i> 쓰기</a>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <h5 style="font-weight:bold; color: firebrick;"><i class="fab fa-hotjar"></i> 인기 글</h5>
+                <ol>
+                    <!-- 검색순위 나열 -->
+                    {% for i in likes%}
+                        <li>
+                            <div title="{{i.title}}" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'"
+                            style="cursor:pointer; width:150px; white-space:nowrap; overflow:hidden;text-overflow:ellipsis;" onclick="location.href='{{i.get_absolute_url}}'">
+                                {{i.title}}
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ol>
+            </div>
         </div>
-        {% comment %} 
-            <ul class="pagination pagination-sm justify-content-center" style="margin-bottom:0px">
-            <li class="page-item"><a class="page-link" href="?page=1"><i class="fas fa-angle-double-left"></i></a>
-            </li>
-            {% for page_num in page_obj.paginator.page_range %}
-                {% if page_num >= page_obj.number|add:-2 and page_num <= page_obj.number|add:2 %}
-                    <li class="page-item"><a class="page-link" href="?page={{page_num}}">{{page_num}}</a></li>
-                {%endif%}
-            {% endfor %}
-            <li class="page-item"><a class="page-link" href="?page={{page_obj.paginator.num_pages}}"><i class="fas fa-angle-double-right"></i></a>
-            </li>
-        </ul>  
-        {% endcomment %}
-    
         
-        
-        <div class="text-right" style="margin-bottom:30px;margin-top:0px">
-            <a href="{%url 'board:add' %}" class="btn btn-primary btn-sm ">
-            <i class="fas fa-pencil-alt"></i> 쓰기</a>
-        </div>
         
 {% endblock %}

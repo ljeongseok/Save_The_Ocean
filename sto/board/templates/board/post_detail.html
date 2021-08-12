@@ -32,7 +32,7 @@
         {% if user.is_active %}
             {% if user in post.like.all %}
                 <a href="{% url 'board:like' post.id %}">
-                <i class="fas fa-heart"></i></a>
+                <i class="fas fa-heart" style="color:red;"></i></a>
             {% else %}
                 <a href="{% url 'board:like' post.id %}">
                 <i class="far fa-heart"></i></a>
@@ -57,7 +57,7 @@
         <input type="hidden" name="post" value="{{post.pk}}">
         <input type="text" name="content" placeholder="Write your comments">
         {% if user.is_active %}
-            <input type="submit" value="Write"/>
+            <input class ="cmt"type="submit" value="Write"/>
         {% else %}
             <a href="{% url 'login' %}" class="button  smooth-scroll-middle">Write</a>
         {% endif %}
@@ -102,4 +102,6 @@
 <script>
     {{post.hits_count}}
 </script>
+
+
 {% endblock %}
