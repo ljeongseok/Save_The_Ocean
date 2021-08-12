@@ -22,7 +22,7 @@ class PostListView(ListView):
 
         likes=[ post for post in Post.objects.all() if post.like.count() > 0 ]
         likes.sort(key=lambda p : p.like.count(), reverse=True)
-        context['likes'] = likes
+        context['likes'] = likes[:5]
         
         return context
 
